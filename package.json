@@ -1,0 +1,28 @@
+{
+  "name": "react-best-swiper",
+  "version": "1.0.0",
+  "description": "react-swiper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cicada-fe/react-best-swiper.git"
+  },
+  "keywords": [
+    "react",
+    "swipe"
+  ],
+  "author": "sherlock221b",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cicada-fe/react-best-swiper/issues"
+  },
+
+  "dependencies": {
+    "react-swipe": "^5.0.3",
+    "swipe-js-iso": "^2.0.3"
+  },
+  "homepage": "https://github.com/cicada-fe/react-best-swiper#readme"
+}
