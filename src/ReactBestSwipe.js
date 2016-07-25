@@ -10,6 +10,7 @@ export  default class ReactBestSwipe extends React.Component {
     constructor(props) {
         super(props);
 
+
         let paginations = [];
 
         //渲染dot
@@ -20,18 +21,12 @@ export  default class ReactBestSwipe extends React.Component {
         }
 
         this.state = {
-            swipeOptions: {
-                speed: this.props.swipeOptions.speed || 500,
-                auto: this.props.swipeOptions.auto || 3000,
-                continuous: this.props.swipeOptions.continuous || true,
-                disableScroll: this.props.swipeOptions.disableScroll || false,
-                stopPropagation: this.props.swipeOptions.stopPropagation || false,
-                callback: this._selectIndex.bind(this),
-                transitionEnd: this._transitionEnd.bind(this)
-            },
-            paginations: paginations
+            paginations : paginations
         }
     }
+
+
+
 
     _selectIndex(index, elem) {
 
@@ -45,10 +40,8 @@ export  default class ReactBestSwipe extends React.Component {
                 else {
                     o.active = false;
                 }
-
                 return o;
             });
-
             this.setState({
                 paginations: p
             })
@@ -73,8 +66,8 @@ export  default class ReactBestSwipe extends React.Component {
             }
 
             let pList = this.state.paginations.map((p)=> {
-                return <span key={p.index}
-                              className={"swiper-pagination-bullet "+(p.active  ? "swiper-pagination-bullet-active" : "")}></span>;
+                return (<span key={p.index}
+                              className={"swiper-pagination-bullet "+(p.active  ? "swiper-pagination-bullet-active" : "")}></span>);
             });
 
             return (
@@ -83,22 +76,19 @@ export  default class ReactBestSwipe extends React.Component {
                 </div>
             );
         }
-
     }
 
     render() {
-        console.log("render..");
+        console.log("render best swiper..");
         return (
             <div className="pos-rel">
                 <ReactSwipe
                     key={this.props.count}
                     ref={this.props.refName}
                     className="carousel"
-                    swipeOptions={this.state.swipeOptions}>
-
+                    swipeOptions={this.props.swipeOptions}>
                     {this.props.children}
                 </ReactSwipe>
-
                 {this._renderPagination()}
             </div>
         )
@@ -108,8 +98,18 @@ export  default class ReactBestSwipe extends React.Component {
 
 ReactBestSwipe.defaultProps = {
     refName: "reactSwipe",
-    showPagination: false
+    showPagination: false,
+    swipeOptions: {
+        speed: 500,
+        auto: 3000,
+        continuous: true,
+        disableScroll: false,
+        stopPropagation: false,
+        callback: this._selectIndex.bind(this),
+        transitionEnd: this._transitionEnd.bind(this)
+    }
 };
+
 ReactBestSwipe.propTypes = {
     //轮播配置
     swipeOptions: React.PropTypes.object,
